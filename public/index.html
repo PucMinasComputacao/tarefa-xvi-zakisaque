@@ -1,13 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Favoritos</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="login.js" defer></script>
+  <script src="app.js" defer></script>
 </head>
 <body>
-    
+
+  <header class="topo">
+    <div>
+      <h1>Catálogo de Favoritos</h1>
+      <p id="mensagemUsuario">Carregando usuário...</p>
+    </div>
+
+    <div style="display:flex; gap:10px;">
+      <a href="favoritos.html">
+        <button class="botao-secundario" type="button">⭐ Meus Favoritos</button>
+      </a>
+      <button class="botao-secundario" type="button" onclick="logoutUser()">Sair</button>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    <p id="mensagemApp" style="text-align: center; color: #ffca28; font-weight: bold;"></p>
+
+    <section class="painel">
+      <h2 id="tituloFormulario">Gerenciar Item</h2>
+      <form id="formItem" style="display: flex; flex-direction: column; gap: 10px; max-width: 500px; margin: 0 auto 20px auto;">
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" placeholder="Digite o título" required>
+
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" placeholder="Digite a descrição" rows="3" required></textarea>
+
+        <div style="display: flex; gap: 10px;">
+          <button type="submit" id="botaoSalvar" class="botao-sucesso">
+            <span id="textoBotaoSalvar">Cadastrar item</span>
+          </button>
+          <button type="button" id="cancelarEdicao" class="botao-perigo" hidden>Cancelar Edição</button>
+        </div>
+      </form>
+    </section>
+    <hr>
+
+    <section class="painel">
+      <h2>Itens disponíveis</h2>
+      <div id="listaItens" class="grade-itens"></div>
+    </section>
+
+    <section class="painel">
+      <h2>Meus favoritos rápidos</h2>
+      <div id="listaFavoritos" class="grade-itens"></div>
+      <p id="mensagemFavoritos" class="mensagem-vazia"></p>
+    </section>
+  </main>
+
 </body>
 </html>

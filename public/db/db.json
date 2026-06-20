@@ -1,0 +1,35 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "Administrador",
+      "login": "admin",
+      "senha": "123",
+      "email": "admin@email.com"
+    },
+    {
+      "id": "2",
+      "nome": "Usuário Teste",
+      "login": "user",
+      "senha": "123",
+      "email": "user@email.com"
+    }
+  ],
+  "itens": [
+    {
+      "id": "1",
+      "titulo": "Design Futurista de Interface 2",
+      "descricao": "Conceito visual focado em interfaces cibernéticas e paleta de cores neon degradê."
+    },
+    {
+      "id": "2",
+      "titulo": "Trilha Sonora Teaser",
+      "descricao": "Áudio masterizado em formato wave contendo arranjos de sintetizadores analógicos e baterias eletrônicas."
+    },
+    {
+      "id": "3",
+      "titulo": "Roteiro do Episódio Piloto",
+      "descricao": "Primeira versão do script textual contendo os diálogos iniciais e a ambientação da distopia."
+    }
+  ]
+}

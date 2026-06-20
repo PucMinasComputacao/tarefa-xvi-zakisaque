@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Item</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="login.js" defer></script>
+</head>
+<body>
+
+  <header class="topo">
+    <div>
+      <h1>📄 Detalhes do Registro</h1>
+      <p id="mensagemUsuario">Carregando usuário...</p>
+    </div>
+    <div style="display:flex; gap:10px;">
+      <a href="index.html"><button class="botao-secundario" type="button">Voltar</button></a>
+      <button class="botao-secundario" type="button" onclick="logoutUser()">Sair</button>
+    </div>
+  </header>
+
+  <main class="conteudo" style="max-width: 600px; margin: 40px auto; padding: 20px;">
+    <article id="detalheContainer" class="card-item" style="display: none; padding: 20px;">
+      <h2 id="detalheTitulo" style="margin-top: 0;">Carregando...</h2>
+      <p style="color: #888; font-size: 0.9rem;">ID do Registro: <span id="detalheId"></span></p>
+      <p id="detalheDescricao" style="font-size: 1.1rem; line-height: 1.6;"></p>
+    </article>
+    <p id="detalheErro" class="mensagem-vazia" style="display: none;">Item não encontrado ou erro no servidor.</p>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // Verifica autenticação básica compartilhada
+      const usuarioLogado = JSON.parse(sessionStorage.getItem("usuarioCorrente"));
+      if (!usuarioLogado) {
+        window.location.href = "login.html";
+        return;
+      }
+      
+      const msgUser = document.getElementById("mensagemUsuario");
+      if(msgUser) msgUser.textContent = `Olá, ${usuarioLogado.nome}`;
+
+      // Captura o ID pela URL
+      const parametros = new URLSearchParams(window.location.search);
+      const idItem = parametros.get("id");
+
+      if (!idItem) {
+        exibirErro();
+        return;
+      }
+
+      try {
+        const resposta = await fetch(`http://localhost:3000/itens/${idItem}`);
+        if (!resposta.ok) throw new Error();
+        
+        const item = await resposta.json();
+        
+        document.getElementById("detalheTitulo").textContent = item.titulo;
+        document.getElementById("detalheId").textContent = item.id;
+        document.getElementById("detalheDescricao").textContent = item.descricao;
+        document.getElementById("detalheContainer").style.display = "block";
+      } catch (erro) {
+        exibirErro();
+      }
+    });
+
+    function exibirErro() {
+      document.getElementById("detalheErro").style.display = "block";
+    }
+  </script>
+</body>
+</html>
