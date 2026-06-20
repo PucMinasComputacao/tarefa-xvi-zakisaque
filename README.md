@@ -26,3 +26,13 @@ Controle de versionamento avançado com Git (commits organizados e tags).
 ## Informações Gerais
 
 
+- Nome: Isaque de Jesus Marra
+- Matricula: 906624
+
+## Prints do trabalho
+
+![PAGINA](public/img/pagina.png)
+
+![FETCH](public/img/fetch.png)
+
+![FETCH](public/img/jsonm.png)
